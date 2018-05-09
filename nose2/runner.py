@@ -47,6 +47,8 @@ class PluggableTestRunner(object):
             self, test, result, startTime, executor)
         print('No idea')
         print(self.session.hooks)
+        print(result)
+        print('was the result')
         self.session.hooks.startTestRun(event)
 
         # allows startTestRun to modify test suite
@@ -54,7 +56,6 @@ class PluggableTestRunner(object):
         # ... and test execution
         executor = event.executeTests
         try:
-            print
             if not event.handled:
                 executor(test, result)
         finally:
