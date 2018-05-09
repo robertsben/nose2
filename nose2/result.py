@@ -29,18 +29,7 @@ class PluggableTestResult(object):
     def __init__(self, session):
         self.session = session
         self.shouldStop = False
-        self.__success = False
-
-    @property
-    def _success(self):
-        print('access')
-        return self.__success
-
-    @_success.setter
-    def _success(self, success):
-        print('some fucker did this')
-        self.__success = success
-
+  
     def startTest(self, test):
         """Start a test case.
 
