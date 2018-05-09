@@ -59,12 +59,18 @@ class PluggableTestRunner(object):
         try:
             if not event.handled:
                 executor(test, result)
+            print('ugh')
         finally:
+            print('idk')
             stopTime = time.time()
             timeTaken = stopTime - startTime
+            print('man')
             event = events.StopTestRunEvent(self, result, stopTime, timeTaken)
+            print('boy')
             self.session.hooks.stopTestRun(event)
+            print('child')
             self.session.hooks.afterTestRun(event)
+            print('lord')
         return result
 
     def _makeResult(self):
