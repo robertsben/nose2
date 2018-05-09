@@ -38,10 +38,14 @@ class PluggableTestRunner(object):
 
         """
         result = self._makeResult()
+        print('start result:')
+        print(result)
         executor = lambda suite, result: suite(result)
         startTime = time.time()
         event = events.StartTestRunEvent(
             self, test, result, startTime, executor)
+        print('No idea')
+        print(self.session.hooks)
         self.session.hooks.startTestRun(event)
 
         # allows startTestRun to modify test suite
@@ -49,6 +53,7 @@ class PluggableTestRunner(object):
         # ... and test execution
         executor = event.executeTests
         try:
+            print
             if not event.handled:
                 executor(test, result)
         finally:
