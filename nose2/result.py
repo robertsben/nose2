@@ -117,9 +117,6 @@ class PluggableTestResult(object):
         # assume failure; plugins must explicitly declare success
         try:
             print('checking')
-            print(hasattr(self, '_success'))
-            print(hasattr(self, '_poonani'))
-            print(self._success)
             return self._success
         except AttributeError:
             print('couldnt find')

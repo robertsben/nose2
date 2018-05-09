@@ -107,18 +107,11 @@ class ResultReporter(events.Plugin):
         self._reportSummary(event)
 
     def wasSuccessful(self, event):
-        print('dunno what this does...')
-        print(event)
         event.success = True
-        print(self.reportCategories.items())
         for name, events in self.reportCategories.items():
-            print('helloooooo')
-            print(events)
             for e in events:
                 if (e.outcome == result.ERROR or
                     (e.outcome == result.FAIL and not e.expected)):
-                    print(e)
-                    print('help')
                     event.success = False
                     break
 

@@ -39,19 +39,11 @@ class PluggableTestRunner(object):
 
         """
         result = self._makeResult()
-        print('start result:')
-        print(result)
-        print(result.wasSuccessful())
         executor = lambda suite, result: suite(result)
         startTime = time.time()
         event = events.StartTestRunEvent(
             self, test, result, startTime, executor)
-        print('No idea')
-        print(self.session.hooks)
-        print(result)
-        print('was the result')
         self.session.hooks.startTestRun(event)
-        print('yeah')
 
         # allows startTestRun to modify test suite
         test = event.suite
@@ -60,18 +52,12 @@ class PluggableTestRunner(object):
         try:
             if not event.handled:
                 executor(test, result)
-            print('ugh')
         finally:
-            print('idk')
             stopTime = time.time()
             timeTaken = stopTime - startTime
-            print('man')
             event = events.StopTestRunEvent(self, result, stopTime, timeTaken)
-            print('boy')
             self.session.hooks.stopTestRun(event)
-            print('child')
             self.session.hooks.afterTestRun(event)
-            print('lord')
         return result
 
     def _makeResult(self):
