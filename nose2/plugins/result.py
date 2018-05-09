@@ -108,6 +108,7 @@ class ResultReporter(events.Plugin):
 
     def wasSuccessful(self, event):
         event.success = True
+        print('foxed you there sunshine')
         for name, events in self.reportCategories.items():
             for e in events:
                 if (e.outcome == result.ERROR or
