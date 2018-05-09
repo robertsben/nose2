@@ -109,7 +109,10 @@ class ResultReporter(events.Plugin):
     def wasSuccessful(self, event):
         print('dunno what this does...')
         event.success = True
+        print(self.reportCategories.items())
         for name, events in self.reportCategories.items():
+            print('helloooooo')
+            print(events)
             for e in events:
                 if (e.outcome == result.ERROR or
                     (e.outcome == result.FAIL and not e.expected)):
