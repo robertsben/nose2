@@ -155,7 +155,7 @@ class Coverage(Plugin):
         log.warning(event.success)
         log.warning(event)
         log.warning(self.decided_failure)
-        if event.success and self.decided_failure:
+        if self.decided_failure:
             log.warning("Yep, failure")
             event.success = False
         return event.success
