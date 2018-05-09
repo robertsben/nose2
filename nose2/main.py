@@ -268,6 +268,7 @@ class PluggableTestProgram(unittest.TestProgram):
         # fire plugin hook
         runner = self._makeRunner()
         log.warning("yeah we're running")
+        log.warning(self.test)
         try:
             self.result = runner.run(self.test)
         except Exception as e:

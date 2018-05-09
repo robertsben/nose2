@@ -40,6 +40,7 @@ class PluggableTestRunner(object):
         result = self._makeResult()
         print('start result:')
         print(result)
+        print(result.wasSuccessful())
         executor = lambda suite, result: suite(result)
         startTime = time.time()
         event = events.StartTestRunEvent(
