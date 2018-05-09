@@ -50,6 +50,7 @@ class PluggableTestRunner(object):
         print(result)
         print('was the result')
         self.session.hooks.startTestRun(event)
+        print('yeah')
 
         # allows startTestRun to modify test suite
         test = event.suite
