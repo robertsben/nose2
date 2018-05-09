@@ -29,7 +29,7 @@ class PluggableTestResult(object):
     def __init__(self, session):
         self.session = session
         self.shouldStop = False
-  
+
     def startTest(self, test):
         """Start a test case.
 
@@ -117,6 +117,7 @@ class PluggableTestResult(object):
         # assume failure; plugins must explicitly declare success
         try:
             print('checking')
+            print(hasattr(self, '_success'))
             print(self._success)
             return self._success
         except AttributeError:
