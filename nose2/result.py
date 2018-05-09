@@ -116,11 +116,14 @@ class PluggableTestResult(object):
         """
         # assume failure; plugins must explicitly declare success
         try:
+            print('checking')
             return self._success
         except AttributeError:
+            print('couldnt find')
             event = events.ResultSuccessEvent(self, False)
             self.session.hooks.wasSuccessful(event)
             self._success = event.success
+            print('success: {}'.format(self._success))
             return self._success
 
     def stop(self):
