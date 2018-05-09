@@ -277,6 +277,8 @@ class PluggableTestProgram(unittest.TestProgram):
                 sys.exit(1)
         if self.exit:
             log.warning("YOOOOO HOOOOOOO")
+            log.warning(self.result)
+            log.warning(self.result.wasSuccessful())
             sys.exit(not self.result.wasSuccessful())
 
     def _makeRunner(self):
