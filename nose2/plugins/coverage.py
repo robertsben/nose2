@@ -108,7 +108,7 @@ class Coverage(Plugin):
         # will pick up on things which happen at import time
         self.covController.start()
 
-    def beforeSummaryReport(self, event):
+    def afterSummaryReport(self, event):
         """Only called if active so stop coverage and produce reports."""
         if self.covController:
             self.covController.stop()
@@ -149,6 +149,8 @@ class Coverage(Plugin):
                 log.warning("decided failure")
                 self.decided_failure = True
 
+        print(self.error_output_buffer.getvalue(), file=event.stream)
+
     def wasSuccessful(self, event):
         """Mark full test run as successful or unsuccessful"""
         log.warning("HELLO")
@@ -160,7 +162,7 @@ class Coverage(Plugin):
             event.success = False
         return event.success
 
-    def afterSummaryReport(self, event):
-        """Reporting data is collected, failure status determined and set.
-        Now print any buffered error output saved from beforeSummaryReport"""
-        print(self.error_output_buffer.getvalue(), file=event.stream)
+    # def afterSummaryReport(self, event):
+    #     """Reporting data is collected, failure status determined and set.
+    #     Now print any buffered error output saved from beforeSummaryReport"""
+    #     print(self.error_output_buffer.getvalue(), file=event.stream)
