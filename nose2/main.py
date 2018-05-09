@@ -271,6 +271,7 @@ class PluggableTestProgram(unittest.TestProgram):
         log.warning(self.test)
         try:
             self.result = runner.run(self.test)
+            log.warning('not yet written?')
         except Exception as e:
             log.exception('Internal Error')
             sys.stderr.write('Internal Error: runTests aborted: %s\n'%(e))
