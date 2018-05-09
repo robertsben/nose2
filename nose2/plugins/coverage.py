@@ -31,6 +31,7 @@ However, when doing so you should also be aware of
 from __future__ import absolute_import, print_function
 import six
 import logging
+import traceback
 
 from nose2.events import Plugin
 
@@ -151,6 +152,7 @@ class Coverage(Plugin):
     def wasSuccessful(self, event):
         """Mark full test run as successful or unsuccessful"""
         log.warning("HELLO")
+        traceback.print_tb()
         log.warning(event.success)
         log.warning(event)
         log.warning(self.decided_failure)
