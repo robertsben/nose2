@@ -140,13 +140,22 @@ class Coverage(Plugin):
                 percent_coverage = self.covController.xml_report()
 
             fail_under = self.covController.get_option("report:fail_under")
+
+            log.warning("fail under: {}".format(fail_under))
+            log.warning("percentage: {}".format(percent_coverage))
             if (fail_under is not None and percent_coverage is not None and
                     fail_under > percent_coverage):
+                log.warning("decided failure")
                 self.decided_failure = True
 
     def wasSuccessful(self, event):
         """Mark full test run as successful or unsuccessful"""
+        log.warning("HELLO")
+        log.warning(event.success)
+        log.warning(event)
+        log.warning(self.decided_failure)
         if event.success and self.decided_failure:
+            log.warning("Yep, failure")
             event.success = False
 
     def afterSummaryReport(self, event):
