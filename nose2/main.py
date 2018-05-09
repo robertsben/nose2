@@ -267,6 +267,7 @@ class PluggableTestProgram(unittest.TestProgram):
         """Run tests"""
         # fire plugin hook
         runner = self._makeRunner()
+        log.warning("yeah we're running")
         try:
             self.result = runner.run(self.test)
         except Exception as e:
@@ -275,6 +276,7 @@ class PluggableTestProgram(unittest.TestProgram):
             if self.exit:
                 sys.exit(1)
         if self.exit:
+            log.warning("YOOOOO HOOOOOOO")
             sys.exit(not self.result.wasSuccessful())
 
     def _makeRunner(self):
