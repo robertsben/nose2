@@ -22,6 +22,7 @@ class PluggableTestRunner(object):
        Class to instantiate to create test result. Default:
        :class:`nose2.result.PluggableTestResult`.
 
+
     """
     resultClass = result.PluggableTestResult
 
