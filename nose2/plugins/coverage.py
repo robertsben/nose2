@@ -152,7 +152,9 @@ class Coverage(Plugin):
     def wasSuccessful(self, event):
         """Mark full test run as successful or unsuccessful"""
         log.warning("HELLO")
+        raise Exception('idk wtf going on')
         traceback.print_tb()
+
         log.warning(event.success)
         log.warning(event)
         log.warning(self.decided_failure)
