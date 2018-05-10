@@ -153,13 +153,8 @@ class Coverage(Plugin):
 
     def wasSuccessful(self, event):
         """Mark full test run as successful or unsuccessful"""
-        log.warning("HELLO")
-        log.warning(event.success)
-        log.warning(event)
-        log.warning(event.result)
-        log.warning(self.decided_failure)
-        if self.decided_failure:
-            log.warning("Yep, failure")
+        print('handled in coverage? {}'.format(event.handled))
+        if event.success and self.decided_failure:
             event.success = False
 
     # def afterSummaryReport(self, event):

@@ -121,8 +121,7 @@ class PluggableTestResult(object):
         except AttributeError:
             print('couldnt find')
             event = events.ResultSuccessEvent(self, False)
-            print('hang on a fuckin minute')
-            print(event.success)
+            print("Handled in initialiasation (nose2/result)? {}".format(event.handled))
             self.session.hooks.wasSuccessful(event)
             print('try that one again')
             print(event.success)
